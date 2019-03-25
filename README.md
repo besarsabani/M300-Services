@@ -1,7 +1,7 @@
 # M300-Services
 
 ### Inhaltsverzeichnis
-- [K1](K1/)
+- [K1](K1)
   - [20 Infrastruktur-Automatisierung](20-Infrastruktur/)
   - [25 Sicherheit](25-Sicherheit/)
   - [30 Container](30-Container/)
