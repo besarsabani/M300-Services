@@ -180,7 +180,7 @@ Ich habe Client-Installation auf https://git-scm.com/downloads heruntergeladen u
      
 3. Repository mit SSH klonen:
     Shell
-      $ git clone git@github.com:silvanwalzbesarsabani/lb2.git
+      $ git clone git@github.com:besarsabani/lb2.git
 
       Cloning into 'lb2'...
      
