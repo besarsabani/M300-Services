@@ -39,6 +39,7 @@ So bin ich für die LB2 vorgegangen.
     - [Volumes für Datenablage](#volumes-f%C3%BCr-datenablage)
     - [Docker Spezifische Befehle](#docker-spezifische-befehle)
   - [Funktion](#funktion)
+  - [Sicherheit](#sicherheit)
 
 K1
 ===
@@ -449,10 +450,22 @@ $ docker container kill <hash>
 $ # Löscht container
 $ docker container rm <hash>
 $ # List images
-$ docker image ls -a                     $ # Löscht Image
+$ docker image ls -a
+$ # Löscht Image
 $ docker image rm <image id>
 $ # Docker compose starten
 $ docker-compose up
 ```
 ## Funktion
+
+Ich habe die Funktion der Docker ebenfalls geprüft. Folgende Testfälle habe ich Dokumetiert.
+
+| **Test Punkt**                                               | **Erwartetes Ergenis**                                       | **Tatsächliches Ergebnis** |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------- |
+| Webserver erreichbar unter localhost                         | Index file seite wird angezeigt| Funktioniert!              |
+| MySQL über Phpmyadmin erreichbar                             | PhpMyAdmin login funktioniert mit MySQL Env-Variabeln        | Funktioniert!              |
+| Webserver Anpassungen werden übernommen | Nach dem Anpassen des Index files ist die Webseite uch direkt angepasst | Funktioniert!              |
+
+
+## Sicherheit
 
