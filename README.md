@@ -29,6 +29,14 @@ So bin ich für die LB2 vorgegangen.
 - [K5](#k5)
   - [Vergleich Vorwissen - Wissenszuwachs](#vergleich-vorwissen---wissenszuwachs)
   - [Reflexion](#reflexion)
+- [LB3-Docker](#lb3-docker)
+  - [K1-LB3](#k1-lb3)
+  - [K2-LB3](#k2-lb3)
+  - [Vorwissen zu Docker](#vorwissen-zu-docker)
+  - [K3-Docker](#k3-docker)
+    - [Docker Container](#docker-container)
+    - [Backend-Frontend](#backend-frontend)
+    - [Volumes für Datenablage](#volumes-f%C3%BCr-datenablage)
 
 K1
 ===
@@ -338,3 +346,85 @@ Ich konnte sehr von LB2 provitieren, da vieles neu für mich war. Vor allem Vagr
 ## Reflexion
 
 Ich habe bei der LB2 mehr Zeit in die Dokumentation gesteckt, wie in die eigentliche Arbeit. Da wir die Funktionen, die in LB2 automatisert werden müssen, schon beim Teil 10 manuell gemacht haben, konnte man vieles wiederholen. Einzig die Anpassungen im Vagrantfile sind neu dazugekommen. Wobei man sagen muss, dass die meissten Befehle, die darin eingebaut werden, ebenfalls schon bei Teil 10 vorgekommen sind. Die Dokumentation mit Markdown war, wie schon erwähnt neu für mich und hat daher die meisste Zeit in anspruch genommen..
+
+# LB3-Docker
+
+## K1-LB3
+
+Da ich für die LB2 die Umgebung schon eingerichtet habe und diese Dokumentiert habe, Kommt man mit diesem Link zu dieser Kompetez.
+> [⇧ *Zur Umgebungs Doku*](#K1)
+
+## K2-LB3
+
+Für die LB2 musste ich auch hier diese Kompetenzen erfüllen. Mit diesem Link kommt man auf die richtige Doku
+> [⇧ *Zur Umgebungs Doku*](#K1)
+
+> [⇧ *Zur Git-client Anleitung*](#K2)
+
+## Vorwissen zu Docker
+
+Ich habe zuvor noch nie mit Docker gearbeitet. Im Geschäft hatte ich noch nichts mit Docker zutun. In diesem Modul habe ich vieles über Docker gelernt. Die LB2 über Vagrant hat mir sehr geholfen, um Docker zu verstehen. Die Dokus im Git haben mir ebenfall sehr geholfen. Ich habe auch die Docker Hub webseite angeschaut. 
+
+<https://docs.docker.com/get-started>
+
+## K3-Docker
+
+### Docker Container
+Ich habe ein Dockerfile und ein Docker-Compose erstellt. 
+
+Im Dockerfile werde ich ein Webserver und eine Mysql Datenbank installieren. 
+Im Compose-File ist die Config drauf. Dari werde ich ein PHPadmin entsprechend einrichten.
+
+Im Docker file habe ich folgende 2 Zeilen hinzugefügt um die php extension hinzuzufügen:
+1. FROM php:7.1-apache
+2. RUN docker-php-ext-install mysqli
+
+Im Compose file habe ich folgende zeilen für Webserver und PHP config:
+```Shell
+php:
+    build: php
+    ports:
+      - "80:80"
+      - "443:443"k
+    restart: on-failure
+    volumes:
+      - .besar/test:/var/www/html
+    cpus: 1
+    mem_limit: 1024m
+```
+Hier der Code für den Graphischen Mysql zugriff.
+```Shell
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+        - db:db
+    ports:
+        - 8080:80
+    restart: on-failure
+    environment:
+        MYSQL_ROOT_PASSWORD: dockerischlustig
+    cpus: 1
+    mem_limit: 1024m
+```
+Hier der Code für den Mysqlserver
+```Shell
+  db:
+    image: mysql:5.7
+    ports:
+     - "3306:3306"
+    volumes:
+     - /var/lib/mysql
+    restart: on-failure
+    environment:
+     - MYSQL_ROOT_PASSWORD=dockerischlustig
+     - MYSQL_DATABASE=database
+    cpus: 1
+    mem_limit: 1024m
+```
+### Backend-Frontend
+
+Als Frontend habe ich PHP eingerichtet und als Backend den Mysql server, der im Hintergrung läuft.
+
+### Volumes für Datenablage
+
+Hier habe ich beim PHP den Pfad angegeben, bei dem der Docker auf mein Index.html zugreift. 
