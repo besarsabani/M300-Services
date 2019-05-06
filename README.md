@@ -37,6 +37,8 @@ So bin ich für die LB2 vorgegangen.
     - [Docker Container](#docker-container)
     - [Backend-Frontend](#backend-frontend)
     - [Volumes für Datenablage](#volumes-f%C3%BCr-datenablage)
+    - [Docker Spezifische Befehle](#docker-spezifische-befehle)
+  - [Funktion](#funktion)
 
 K1
 ===
@@ -427,4 +429,30 @@ Als Frontend habe ich PHP eingerichtet und als Backend den Mysql server, der im 
 
 ### Volumes für Datenablage
 
-Hier habe ich beim PHP den Pfad angegeben, bei dem der Docker auf mein Index.html zugreift. 
+Hier habe ich beim PHP den Pfad angegeben, bei dem der Docker auf mein Index.html zugreift. Wenn ich dieses File Lokal anpasse, wird das File im Docker automatisch angepasst und die Webseite aktualisiert.
+
+### Docker Spezifische Befehle
+
+Hier eine Auflistung der wichtigsten Docker Befehle:
+
+```Shell
+$ #Docker file erstellen
+$ docker build -t name .
+$ #startet name und mappt port 4000 zu 80
+$ docker run -p 4000:80 name
+$ #Listet alle Container auf
+$ docker container ls -a
+$ # Stoppt Container
+$ docker container stop <hash>
+$ #Force Shutdown
+$ docker container kill <hash>
+$ # Löscht container
+$ docker container rm <hash>
+$ # List images
+$ docker image ls -a                     $ # Löscht Image
+$ docker image rm <image id>
+$ # Docker compose starten
+$ docker-compose up
+```
+## Funktion
+
