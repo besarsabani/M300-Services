@@ -40,6 +40,9 @@ So bin ich für die LB2 vorgegangen.
     - [Docker Spezifische Befehle](#docker-spezifische-befehle)
   - [Funktion](#funktion)
   - [Sicherheit](#sicherheit)
+    - [Image Poisoning](#image-poisoning)
+    - [Ressourcen Limiten angeben](#ressourcen-limiten-angeben)
+    - [Benachrichtungen](#benachrichtungen)
 
 K1
 ===
@@ -469,3 +472,11 @@ Ich habe die Funktion der Docker ebenfalls geprüft. Folgende Testfälle habe ic
 
 ## Sicherheit
 
+### Image Poisoning
+Die Images habe ich nur von der Offiziellen Docker hub Seite herunterladen.  
+
+### Ressourcen Limiten angeben
+Cpu und Memory Limiten erstellen, damit der Docker nicht unnötige Ressourcen braucht. Ebenfalls kann man Einrichten, dass man bei grosser Last eine Benachrichtigung bekommt und das Problem so Analysiert.
+
+### Benachrichtungen
+Man kann bei prtg trigger erstellen wenn eine Benachrichtigung erscheinen soll. Man kann z.b trigger erstellen wenn alle Ressourcen gebraucht werden, oder wenn etwas verändert wurde.
